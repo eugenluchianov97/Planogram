@@ -391,8 +391,7 @@ onMounted(() => {
                                     >{{item.thumbnail}}</div>
                                   <div v-else-if=" 'type' in field && field.type === 'img' ">
 
-                                    <Image  :element="item" class="w-[70px] h-[80px] object-contain" alt=""
-                                    />
+                                    <Image  :element="item" class="w-[70px] h-[80px] object-contain" alt=""/>
                                   </div>
                                     <Link
                                         v-else-if="
@@ -560,19 +559,12 @@ onMounted(() => {
                         </tr>
                     </tbody>
                 </table>
-                <div
-                    v-if="props.items.total == 0"
-                    class="text-center my-2 text-sm text-gray-700"
-                >
+                <div v-if="props.items.total === 0" class="text-center my-2 text-sm text-gray-700">
                     Пусто
                 </div>
 
                 <nav class="flex justify-end mt-3">
-                    <v-pagination
-                        v-model="currentPage"
-                        :pages="lastPage"
-                        @update:modelValue="updateHandler"
-                    />
+                    <v-pagination v-model="currentPage" :pages="lastPage" @update:modelValue="updateHandler"/>
                 </nav>
             </div>
         </div>

@@ -25,6 +25,7 @@ class ProductController extends Controller
             $products = $products->where('Name', 'like', '%' . $request->q . '%');
         }
 
+
         return inertia('Dashboard/Product/Index', [
             'products' => $products->paginate(15),
         ]);
@@ -67,16 +68,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $validatedData = $request->validate([
+            'BoxWidth' => 'required|numeric|min:1',
+            'BoxDepth' => 'required|numeric|min:1',
+            'BoxHeight' => 'required|numeric|min:1',
+        ],
+            [
+                '*.numeric' => 'Значение должно быть числом!',
+                '*.min' => 'Минимальное значение 1!',
+            ]);
 
-        $product->BoxWidth = $request->BoxWidth;
-        $product->BoxDepth = $request->BoxDepth;
-        $product->BoxHeight = $request->BoxHeight;
+        $product->BoxWidth = $validatedData['BoxWidth'];
+        $product->BoxDepth = $validatedData['BoxDepth'];
+        $product->BoxHeight = $validatedData['BoxHeight'];
+
         $product->UpdatedManually = true;
         $product->EmptyDimensions = false;
+
         $product->save();
 
-        if ($request->hasFile('image')) {
-            $product->setImages($request->file('image'));
+        if ($request->hasFile('file')) {
+            $product->setImages($request->file('file'));
         }
 
         return response()->json('success');

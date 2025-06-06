@@ -52,10 +52,9 @@ class Product extends Model
 
     public function setImages($file){
         Storage::disk('public')->put('pictures/'.$this->Code.'.PNG', file_get_contents($file));
+
         Barcode::updateOrcreate(['code' => $this->Code, 'product_id' => $this->id] ,
             [
-                'code' => $this->Code,
-                'product_id' => $this->id,
                 'img' => '/storage/pictures/'.$this->Code.'.PNG',
                 'exists' => Barcode::exists($this->Code),
             ]);
@@ -63,10 +62,9 @@ class Product extends Model
         if(count($this->barcodes) > 0){
              foreach($this->barcodes as $barcode){
                  Storage::disk('public')->put('pictures/'.$barcode->code.'.PNG', file_get_contents($file));
+
                  Barcode::updateOrcreate(['code' => $barcode->code, 'product_id' => $this->id],
                      [
-                         'code' => $this->Code,
-                         'product_id' => $this->id,
                          'img' => '/storage/pictures/'.$barcode->code.'.PNG',
                          'exists' => Barcode::exists($barcode->code),
                      ]);
