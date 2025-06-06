@@ -11,7 +11,7 @@ const props = defineProps({products: Object});
 <template>
   <Head title="Продукты"/>
   <DashboardLayout>
-    <CRUD2
+    <CRUD
         title="Продукты"
         meta="Продукт"
         name="products"

@@ -391,7 +391,7 @@ onMounted(() => {
                                     >{{item.thumbnail}}</div>
                                   <div v-else-if=" 'type' in field && field.type === 'img' ">
 
-                                    <Image  :barcodes="item.barcodes !== undefined ? item.barcodes : []" class="w-[70px] h-[80px] object-contain" alt=""
+                                    <Image  :element="item" class="w-[70px] h-[80px] object-contain" alt=""
                                     />
                                   </div>
                                     <Link
