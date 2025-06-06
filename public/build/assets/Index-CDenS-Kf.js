@@ -1,0 +1,1 @@
+import{D as r}from"./DashboardLayout-CbK7N0V9.js";import{e as o,o as s,b as a,u as n,Z as l,w as u,a as t,F as m}from"./app-DoIGVFwv.js";import"./_plugin-vue_export-helper-DlAUqK2U.js";const f={__name:"Index",setup(d){return(i,e)=>(s(),o(m,null,[a(n(l),{title:"Главная"}),a(r,null,{default:u(()=>e[0]||(e[0]=[t("div",null,[t("div")],-1)])),_:1})],64))}};export{f as default};
